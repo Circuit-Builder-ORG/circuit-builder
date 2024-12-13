@@ -21,9 +21,11 @@ mongoose.connect(mongoURI)
 const server = http.createServer(app);
 const io = socketIo(server);
 
-io.on('connection', (socket) => {
+io.on('connection', (socket) => 
+{
     console.log('A user connected');
-    socket.on('disconnect', () => {
+    socket.on('disconnect', () => 
+    {
         console.log('A user disconnected');
     });
 });
@@ -32,17 +34,19 @@ io.on('connection', (socket) => {
 app.use(express.json()); // Parse incoming JSON requests
 
 // Import routes
-const circuitRoutes = require('./routes/circuits');
+const circuitRoutes = require('./routes/circuitRoutes');
 
 // Use routes
 app.use('/api/circuits', circuitRoutes);
 
 // Define base route
-app.get('/', (req, res) => {
+app.get('/', (req, res) => 
+{
     res.send('Circuit Builder API is running!');
 });
 
 // Start the server
-server.listen(PORT, () => {
+server.listen(PORT, () => 
+{
     console.log(`Server is running on http://localhost:${PORT}`);
 });
