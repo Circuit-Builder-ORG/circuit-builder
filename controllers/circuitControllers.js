@@ -1,16 +1,17 @@
-const CircuitModel = require('../models/circuitModel');
+const circuitModel = require('../models/circuitModel');
 
 // Get all circuits
 const getCircuits = async (req, res) => 
 {
     try 
     {
-        const circuits = await CircuitModel.find();
+        const circuits = await circuitModel.find();
         res.status(200).json(circuits);
     }
     catch (err)
     {
-        res.status(500).json({error: "Failed to retrieve all circuits"})
+        console.error("Error occured", err);
+        res.status(500).json({error: "Failed to retrieve all circuits"});
     }
 }
 
@@ -21,7 +22,7 @@ const getCircuitById = async (req, res) =>
 
     try 
     {
-        const circuit = await CircuitModel.findById(id);
+        const circuit = await circuitModel.findById(id);
         if (!circuit)
         {
             return res.status(404).json({error: "Circuit not found"});
@@ -31,6 +32,7 @@ const getCircuitById = async (req, res) =>
     }
     catch (err)
     {
+        console.error("Error occured", err);
         res.status(500).json({error: "Failed to retrieve circuit"});
     }
 
@@ -43,33 +45,51 @@ const createCircuit = async (req, res) =>
 
     try
     {
-        const newCircuit = new CircuitModel({name, components});
+        const newCircuit = new circuitModel({name, components});
         await newCircuit.save();
         res.status(201).json(newCircuit);
     }
     catch (err)
     {
+        console.error("Error occured", err);
         res.status(500).json({error: "Failed to add circuit"});
     }
 }
 
+// Delete all circuits
+const deleteCircuits = async (req, res) =>
+{
+    try
+    {
+        await circuitModel.deleteMany({});
+        res.status(200).json({message: "Successfully deleted all circuits"})
+    }
+    catch (err)
+    {
+        console.error("Error occured", err);
+        res.status(500).json({error: "Failed to delete all circuits"});
+    }
+}
+
 // Delete a circuit
-const deleteCircuit = async (req, res) =>
+const deleteCircuitByID = async (req, res) =>
 {
     const { id } = req.params;
 
     try
     {
-        const deleteResult = await CircuitModel.findByIdAndDelete(id);
+        const deleteResult = await circuitModel.findByIdAndDelete(id);
         if (!deleteResult)
         {
             return res.status(404).json({error: "Circuit not found"});
         }
+
         res.status(200).json({message: "Successfully deleted circuit"});
     }
-    catch
+    catch (err)
     {
-        res.status(500).json({error: "Failed to delete ciruit"})
+        console.error("Error occured", err);
+        res.status(500).json({error: "Failed to delete circuit"});
     }
 }
 
@@ -81,17 +101,19 @@ const updateCircuit = async (req, res) =>
 
     try
     {
-        const updateResult = await CircuitModel.findByIdAndUpdate(id, {name, components});
+        const updateResult = await circuitModel.findByIdAndUpdate(id, {name, components});
         if (!updateResult)
         {
-            return res.status(404).json({error: "Circuit not found"})
+            return res.status(404).json({error: "Circuit not found"});
         }
+        
         res.status(200).json(updateResult);
     }
     catch (err)
     {
+        console.error("Error occured", err);
         res.status(500).json({error: "Failed to update circuit"});
     }
 }
 
-module.exports = { getCircuits, getCircuitById, createCircuit, deleteCircuit, updateCircuit };
+module.exports = { getCircuits, getCircuitById, createCircuit, deleteCircuits, deleteCircuitByID, updateCircuit };

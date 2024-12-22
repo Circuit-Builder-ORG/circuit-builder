@@ -35,9 +35,11 @@ app.use(express.json()); // Parse incoming JSON requests
 
 // Import routes
 const circuitRoutes = require('./routes/circuitRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 // Use routes
 app.use('/api/circuits', circuitRoutes);
+app.use('/api/users', userRoutes);
 
 // Define base route
 app.get('/', (req, res) => 
