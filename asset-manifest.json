@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Circuit-Builder-ORG/circuit-builder/tree/main/client/static/css/main.f855e6bc.css",
+    "main.js": "/Circuit-Builder-ORG/circuit-builder/tree/main/client/static/js/main.5274798f.js",
+    "static/js/453.258b012d.chunk.js": "/Circuit-Builder-ORG/circuit-builder/tree/main/client/static/js/453.258b012d.chunk.js",
+    "index.html": "/Circuit-Builder-ORG/circuit-builder/tree/main/client/index.html",
+    "main.f855e6bc.css.map": "/Circuit-Builder-ORG/circuit-builder/tree/main/client/static/css/main.f855e6bc.css.map",
+    "main.5274798f.js.map": "/Circuit-Builder-ORG/circuit-builder/tree/main/client/static/js/main.5274798f.js.map",
+    "453.258b012d.chunk.js.map": "/Circuit-Builder-ORG/circuit-builder/tree/main/client/static/js/453.258b012d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.5274798f.js"
+  ]
+}
