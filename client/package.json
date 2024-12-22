@@ -24,7 +24,7 @@
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://github.com/Circuit-Builder-ORG/circuit-builder/tree/main/client",
+  "homepage": "https://circuit-builder-org.github.io/circuit-builder/",
   "eslintConfig": {
     "extends": [
       "react-app",
