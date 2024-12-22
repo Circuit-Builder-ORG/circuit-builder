@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.2.1",
     "axios": "^1.7.9",
     "cra-template": "1.2.0",
+    "gh-pages": "^6.2.0",
     "konva": "^9.3.16",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -19,8 +20,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
+  "homepage": "https://github.com/Circuit-Builder-ORG/circuit-builder/tree/main/client",
   "eslintConfig": {
     "extends": [
       "react-app",
